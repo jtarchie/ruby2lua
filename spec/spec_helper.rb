@@ -1,5 +1,6 @@
 require 'ruby2lua'
 require 'language/lua'
+require 'pry'
 
 RSpec.configure do |config|
   config.treat_symbols_as_metadata_keys_with_true_values = true
@@ -14,7 +15,8 @@ RSpec.configure do |config|
 
   def run!(expr)
     lua = Language::Lua.new
-    lua.eval Ruby2Lua.compile!(expr)
+    compiled_lua = Ruby2Lua.compile!(expr)
+    lua.eval compiled_lua
     lua.compiled_function
   end
 end
