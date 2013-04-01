@@ -32,4 +32,13 @@ describe "When using variables" do
       end
     end
   end
+
+  context "when assigning multiple variables" do
+    context "with a literal" do
+      it "returns the literal value" do
+        run!("age=1; name=2").should == 2
+        run!("age=10.01; name=3.4; age").should == 10.01
+      end
+    end
+  end
 end

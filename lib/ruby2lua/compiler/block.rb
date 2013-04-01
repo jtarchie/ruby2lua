@@ -3,9 +3,8 @@ module Ruby2Lua
     class Block < Base
       def to_s
         expressions = sexp.sexp_body.collect do |s|
-          compile(s)
+          compile(s, s == sexp.sexp_body.last)
         end
-        expressions[-1] = " return #{expressions[-1]}"
         expressions.join("\n")
       end
     end

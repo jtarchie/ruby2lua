@@ -7,8 +7,11 @@ module Ruby2Lua
 
       private
 
-      def compile(sexp)
-        Compiler::Base.new(root, sexp).to_s
+      def compile(sexp, force_return = false)
+        Compiler::Base.new(
+          force_return ? sexp : root,
+          sexp
+        ).to_s
       end
     end
   end
