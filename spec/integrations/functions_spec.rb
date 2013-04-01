@@ -31,4 +31,18 @@ describe "When declaring functions" do
     }).should == 5
     end
   end
+
+  context "with multiple methods with arguments" do
+    it "can use those arguments in expressions" do
+      run!(%q{
+      def add(a,b)
+        a + b
+      end
+      def sub(a,b)
+        a - b
+      end
+      add(2,3) - sub(2,1)
+    }).should == 4
+    end
+  end
 end
