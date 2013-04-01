@@ -13,6 +13,10 @@ module Ruby2Lua
           sexp
         ).to_s
       end
+
+      def sanitized_method_name(method_name)
+        method_name.to_s.gsub(/\?$/, '__boolean')
+      end
     end
   end
 end

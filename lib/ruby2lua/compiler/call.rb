@@ -4,10 +4,11 @@ module Ruby2Lua
       def to_s
         receiver, invoking_method, arglist = sexp.sexp_body
         case invoking_method.to_s
-          when '+', '-', '/', '*'
+          when '+', '-', '/', '*', '>'
             "#{return_statement}(#{compile(receiver)} #{invoking_method} #{compile(arglist)})"
           else
-            "#{return_statement}(#{invoking_method}())"
+            invoking_method = sanitized_method_name(invoking_method)
+            "#{return_statement}(#{invoking_method}(#{compile(arglist) if arglist}))"
         end
 
       end

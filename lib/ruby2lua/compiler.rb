@@ -7,6 +7,7 @@ require "ruby2lua/compiler/lasgn"
 require "ruby2lua/compiler/lvar"
 require "ruby2lua/compiler/lit"
 require "ruby2lua/compiler/defn"
+require "ruby2lua/compiler/args"
 
 module Ruby2Lua
   class Compiler
